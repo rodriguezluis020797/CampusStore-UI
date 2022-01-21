@@ -11,8 +11,8 @@ export class UserService{
         private http: HttpClient
     ) { }
 
-    public getUser(userId: Number): Observable<UserModel> {
-        return this.http.get<UserModel>('https://localhost:5001/users/getuser/' + userId);
+    public getUser(userEmail: String): Observable<UserModel> {
+        return this.http.get<UserModel>('https://localhost:5001/users/getuser/' + userEmail);
     }
     
     }
