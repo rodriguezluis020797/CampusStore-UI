@@ -16,32 +16,49 @@ export class UserProfileComponent implements OnInit {
     private users: UserService,
     private cookies: Cookies,
 
-  ) { }
+  ) {}
 
   public user: UserModel | undefined;
   public credentials: LogInModel = new LogInModel();
-  
   public loading: boolean = false;
 
 
   ngOnInit(): void {
 
-    
+    if(this.cookies.checkUserCookie() == true){
+
+    this.user = this.cookies.getUserCookie();
+
+    }
+
 
   }
 
-  login() : void{
+  login() : void {
     this.credentials.providedEmail = "lurodrig@linfield.edu";
 
     this.users.getUser(this.credentials.providedEmail).subscribe(
       (result) => {
+
         this.user = result;
-        this.cookies.setUserCookie(this.user);
+        this.cookies.setUserCookie(result);
+        
         this.credentials = new LogInModel();
       }, (error) => {
         this.credentials.providedPassword = undefined;
       }
     );
+  }
+
+  logUser() : void {
+
+    console.log(this.user);
+
+  }
+
+  logout() : void {
+    this.cookies.removeUserCookie();
+    this.user = undefined;
   }
 
 

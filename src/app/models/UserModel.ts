@@ -1,7 +1,7 @@
 export class UserModel {
     userId: Number | undefined;
-    firstName: String | undefined;
-    middleName?: String | undefined;
-    lastName: String | undefined;
-    eMail: String | undefined;
+    firstName: string | undefined;
+    middleName?: string | undefined;
+    lastName: string | undefined;
+    eMail: string | undefined;
 }
