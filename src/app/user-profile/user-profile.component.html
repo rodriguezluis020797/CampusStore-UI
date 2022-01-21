@@ -1,0 +1,37 @@
+<ng-container *ngIf="user">
+    <div>
+        <h2>
+            Hello, {{user.firstName}}
+        </h2>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="!user">
+    <div>
+        <div class="row">
+            <div class="col-4">
+                d
+            </div>
+            <div class="col-6">
+                <form>
+                    <div class="form-group">
+                      <label for="email">E-Mail Address</label>
+                      <input [(ngModel)]="providedEmail" name="email" type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input [(ngModel)]="providedPassword" name="password" type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" (click)="login()">Submit</button>
+                  </form>
+            </div>
+
+            <div class="col-2">
+                d
+            </div>
+        </div>
+
+    </div>
+</ng-container>
