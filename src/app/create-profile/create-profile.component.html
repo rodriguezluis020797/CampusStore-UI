@@ -1,1 +1,51 @@
-<p>create-profile works!</p>
+<ng-container>
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <h2>Personal Details</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control"
+                            id="firstName" placeholder="First Name">
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+                        <label for="middleName">Middle Name</label>
+                        <input [(ngModel)]="user.middleName" name="middleName" type="text" class="form-control"
+                            id="middleName" placeholder="Middle Name">
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control"
+                            id="lastName" placeholder="Last Name">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-auto">
+                <h2>Contact Information</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input [(ngModel)]="user.eMail" name="email" type="email" class="form-control" id="email"
+                            placeholder="Enter email">
+                    </div>
+                </form>
+                
+            </div>
+
+            <div class="text-center">
+                <p class="error-message">
+                    {{errorMessage}}
+                </p>
+                <button type="submit" class="btn btn-primary" (click)="saveNewUser()">Create Profile</button>
+            </div>
+        </div>
+    </div>
+</ng-container>

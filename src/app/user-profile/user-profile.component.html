@@ -1,11 +1,12 @@
 <!--
     User Profile Page
 -->
-<ng-container *ngIf="user">
+<ng-container *ngIf="user && editProfile == false">
     <div>
         <h1>
             Hello, {{user.firstName}}
         </h1>
+        <p class="success-message text-center" *ngIf="successMessage">{{successMessage}}</p>
         <div class="row justify-content-md-center">
             <div class="col-3">
                 <h2>Personal Details</h2>
@@ -13,7 +14,7 @@
                 <p>{{user.firstName}} {{user.middleName}} {{user.lastName}}</p>
                 <h2>Contact Information</h2>
                 <p>{{user.eMail}}</p>
-                <button class="btn btn-primary">Edit Profile</button>
+                <button class="btn btn-primary" (click)="editProfileFunc()">Edit Profile</button>
             </div>
             <div class="col-md-auto">
                 <h2>Order History</h2>
@@ -43,9 +44,63 @@
 </ng-container>
 
 <!--
+    Edit Profile
+-->
+<ng-container *ngIf="this.editProfile && user">
+    <div>
+        <button type="submit" class="btn btn-primary" (click)="cancelEdit()">Cancel Update</button>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <h2>Personal Details</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control"
+                            id="firstName">
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+                        <label for="middleName">Middle Name</label>
+                        <input [(ngModel)]="user.middleName" name="middleName" type="text" class="form-control"
+                            id="middleName" placeholder="Middle Name">
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control"
+                            id="lastName" placeholder="Last Name">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-auto">
+                <h2>Contact Information</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input [(ngModel)]="user.eMail" name="email" type="email" class="form-control" id="email"
+                            placeholder="Enter email">
+                    </div>
+                </form>
+                
+            </div>
+
+            <div class="text-center">
+                <p class="error-message">
+                    {{errorMessage}}
+                </p>
+                <button type="submit" class="btn btn-primary" (click)="editSave()">Update Profile</button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<!--
     Login Page
 -->
-
 <ng-container *ngIf="!user">
     <button type="submit" class="btn btn-primary" (click)="createProfile()">Create Profile</button>
     <div>
@@ -67,7 +122,8 @@
                         {{errorMessage}}
                     </p>
                 </form>
-                <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+                <button *ngIf="allowLogin" type="submit" class="btn btn-primary" (click)="login()">Login</button>
+                <button *ngIf="!allowLogin" type="submit" class="btn btn-primary" disabled>Login</button>
             </div>
 
             <div class="col-md-auto">
@@ -76,6 +132,5 @@
                 <h1>Login</h1>
             </div>
         </div>
-
     </div>
 </ng-container>
