@@ -16,11 +16,14 @@ export class CreateProfileComponent implements OnInit {
   constructor(
     private users: UserService,
     private router: Router,
-    private cookies: Cookies
   ) { }
 
   public user: UserModel = new UserModel();
   public errorMessage: string | undefined;
+  public success: boolean | undefined;
+  public tempPass: string | undefined;
+
+
 
   ngOnInit(): void {
 
@@ -29,12 +32,16 @@ export class CreateProfileComponent implements OnInit {
   saveNewUser() : void {
     this.users.createUser(this.user).subscribe(
       (result) => {
-        this.cookies.setUserCookie(result);
-        this.router.navigate(['']);
+        this.success = true;
+        this.tempPass = result.tempPassword;
       }, (error) => {
-        
+        this.errorMessageFunc(error.error.text);
       }
     );
+  }
+
+  toLogin() : void {
+    this.router.navigate(['/user-profile']);
   }
 
 
@@ -42,6 +49,10 @@ export class CreateProfileComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-
+  errorMessageFunc(message: string) : void {
+    setTimeout(() => {
+      this.errorMessage = message;
+    }, 5000);
+  }
 
 }
