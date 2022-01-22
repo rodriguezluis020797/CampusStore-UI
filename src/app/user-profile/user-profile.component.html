@@ -15,6 +15,7 @@
                 <h2>Contact Information</h2>
                 <p>{{user.eMail}}</p>
                 <button class="btn btn-primary" (click)="editProfileFunc()">Edit Profile</button>
+                <button class="btn btn-primary" (click)="changePassword()">Change Password</button>
             </div>
             <div class="col-md-auto">
                 <h2>Order History</h2>
@@ -85,7 +86,7 @@
                             placeholder="Enter email">
                     </div>
                 </form>
-                
+
             </div>
 
             <div class="text-center">
@@ -118,6 +119,7 @@
                         <input [(ngModel)]="credentials.providedPassword" name="password" type="password"
                             class="form-control" id="password" placeholder="Password">
                     </div>
+
                     <p class="error-message">
                         {{errorMessage}}
                     </p>

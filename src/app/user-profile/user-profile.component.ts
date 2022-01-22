@@ -18,7 +18,6 @@ export class UserProfileComponent implements OnInit {
     private users: UserService,
     private cookies: Cookies,
     private router: Router
-
   ) { }
 
   public user: UserModel | undefined;
@@ -28,20 +27,17 @@ export class UserProfileComponent implements OnInit {
   public editProfile: boolean = false;
   public allowLogin: boolean = true;
 
-
   public errorMessage: string | undefined;
   public successMessage: string | undefined;
 
-
-
-  ngOnInit(): void {
+  ngOnInit() : void {
     if (this.cookies.checkUserCookie() == true) {
       this.user = this.cookies.getUserCookie();
     }
   }
 
-  login(): void {
-    if(this.allowLogin){
+  login() : void {
+    if (this.allowLogin) {
       this.users.getUser(this.credentials).subscribe(
         (result) => {
           this.cookies.setUserCookie(result);
@@ -58,15 +54,14 @@ export class UserProfileComponent implements OnInit {
         }
       );
     }
-    
   }
 
-  editProfileFunc(): void {
+  editProfileFunc() : void {
     this.successMessage = undefined;
     this.editProfile = true;
   }
 
-  editSave(): void {
+  editSave() : void {
     if (this.user) {
       this.users.updateUser(this.user).subscribe(
         (result) => {
@@ -79,7 +74,6 @@ export class UserProfileComponent implements OnInit {
         }
       );
     }
-
   }
 
   cancelEdit() : void {
@@ -87,11 +81,9 @@ export class UserProfileComponent implements OnInit {
     this.editProfile = false;
   }
 
-  createProfile(): void {
+  createProfile() : void {
     this.router.navigate(['/create-profile'])
   }
-
-
 
   successMessageFunc(message: string) : void {
     this.successMessage = message;
@@ -100,5 +92,7 @@ export class UserProfileComponent implements OnInit {
     }, 5000);
   }
 
-
+  changePassword() : void {
+    this.router.navigate(['/user-profile/change-password']);
+  }
 }

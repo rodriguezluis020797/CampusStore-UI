@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UserProfileComponent,
-    CreateProfileComponent
+    CreateProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     FormsModule,
@@ -25,7 +27,8 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
       [
         {path:'', component:HomeComponent},
         {path:'user-profile', component: UserProfileComponent},
-        {path:'create-profile', component: CreateProfileComponent}
+        {path:'create-profile', component: CreateProfileComponent},
+        {path:'user-profile/change-password', component: ChangePasswordComponent}
       ]
     )
   ],
