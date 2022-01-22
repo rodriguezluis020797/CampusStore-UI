@@ -43,19 +43,24 @@ export class UserProfileComponent implements OnInit {
     this.credentials.providedEmail = "lurodrig@linfield.edu";
 
     this.users.getUser(this.credentials.providedEmail).subscribe(
-    async (result) => {
+    (result) => {
 
-        await this.cookies.setUserCookie(result);
+        this.cookies.setUserCookie(result);
         this.user = result;
 
 
-        await this.router.navigate(['']);
+        this.router.navigate(['']);
         
         this.credentials = new LogInModel();
       }, (error) => {
         this.credentials.providedPassword = undefined;
       }
     );
+  }
+
+
+  createProfile() : void {
+    this.router.navigate(['/create-profile'])
   }
 
 

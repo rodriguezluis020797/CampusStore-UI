@@ -6,16 +6,48 @@
         <h1>
             Hello, {{user.firstName}}
         </h1>
+        <div class="row justify-content-md-center">
+            <div class="col-3">
+                <h2>Personal Details</h2>
+                <h3>Name:</h3>
+                <p>{{user.firstName}} {{user.middleName}} {{user.lastName}}</p>
+                <h2>Contact Information</h2>
+                <p>{{user.eMail}}</p>
+                <button class="btn btn-primary">Edit Profile</button>
+            </div>
+            <div class="col-md-auto">
+                <h2>Order History</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order Id</th>
+                            <th scope="col">Seller</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Shipped</th>
+                            <th scope="col">View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Otto</td>
+                            <td>Item A</td>
+                            <td>*Date Shipped*</td>
+                            <td><button class="btn btn-primary" disabled>Details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </ng-container>
-
 
 <!--
     Login Page
 -->
 
 <ng-container *ngIf="!user">
-    <button type="submit" class="btn btn-primary" disabled>Create Profile</button>
+    <button type="submit" class="btn btn-primary" (click)="createProfile()">Create Profile</button>
     <div>
         <div class="row justify-content-md-center">
             <div class="col-3">

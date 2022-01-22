@@ -8,12 +8,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { CreateProfileComponent } from './create-profile/create-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    CreateProfileComponent
   ],
   imports: [
     FormsModule,
@@ -22,7 +24,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     RouterModule.forRoot(
       [
         {path:'', component:HomeComponent},
-        {path:'user-profile', component: UserProfileComponent}
+        {path:'user-profile', component: UserProfileComponent},
+        {path:'create-profile', component: CreateProfileComponent}
       ]
     )
   ],
