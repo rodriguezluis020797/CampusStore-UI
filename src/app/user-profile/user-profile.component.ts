@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/services/user-service';
+import { AppComponent } from '../app.component';
 import { Cookies } from '../Cookies';
 import { LogInModel } from '../models/login-model';
 import { UserModel } from '../models/UserModel';
@@ -15,12 +17,15 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private users: UserService,
     private cookies: Cookies,
+    private router: Router
 
   ) {}
 
   public user: UserModel | undefined;
   public credentials: LogInModel = new LogInModel();
   public loading: boolean = false;
+
+  ap: AppComponent = new AppComponent(this.cookies);
 
 
   ngOnInit(): void {
@@ -38,27 +43,19 @@ export class UserProfileComponent implements OnInit {
     this.credentials.providedEmail = "lurodrig@linfield.edu";
 
     this.users.getUser(this.credentials.providedEmail).subscribe(
-      (result) => {
+    async (result) => {
 
+        await this.cookies.setUserCookie(result);
         this.user = result;
-        this.cookies.setUserCookie(result);
+
+
+        await this.router.navigate(['']);
         
         this.credentials = new LogInModel();
       }, (error) => {
         this.credentials.providedPassword = undefined;
       }
     );
-  }
-
-  logUser() : void {
-
-    console.log(this.user);
-
-  }
-
-  logout() : void {
-    this.cookies.removeUserCookie();
-    this.user = undefined;
   }
 
 

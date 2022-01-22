@@ -10,6 +10,10 @@ export class Cookies{
         private cookies: CookieService,
     ){}
 
+    public deleteAllCookies() : void {
+        this.cookies.deleteAll();
+    }
+
     /**
      * 
      * @returns user cookie functions

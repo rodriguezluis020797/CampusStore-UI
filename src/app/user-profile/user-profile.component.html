@@ -1,23 +1,24 @@
+<!--
+    User Profile Page
+-->
 <ng-container *ngIf="user">
     <div>
-        <h2>
+        <h1>
             Hello, {{user.firstName}}
-        </h2>
-        <button (click)="logout()" class="btn btn-primary">Logout</button>
-        <button (click)="logUser()" class="btn btn-primary">Log User</button>
+        </h1>
     </div>
 </ng-container>
+
+
+<!--
+    Login Page
+-->
 
 <ng-container *ngIf="!user">
     <button type="submit" class="btn btn-primary" disabled>Create Profile</button>
     <div>
-        <div class="row">
-            <div class="col-2">
-                <!--
-                    Place holder
-                -->
-            </div>
-            <div style="align-content: center;" class="col-3">
+        <div class="row justify-content-md-center">
+            <div class="col-3">
                 <form>
                     <div class="form-group">
                         <label for="email">E-Mail Address</label>
@@ -29,15 +30,16 @@
                         <label for="password">Password</label>
                         <input [(ngModel)]="credentials.providedPassword" name="password" type="password"
                             class="form-control" id="password" placeholder="Password">
+
                     </div>
                     <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
                 </form>
             </div>
 
-            <div class="text-center col-7">
+            <div class="col-md-auto">
                 <h1>Campus</h1>
-                <h1 style="text-indent: 0.5in;">Store</h1>
-                <h1 style="text-indent: 1in;">Login</h1>
+                <h1>Store</h1>
+                <h1>Login</h1>
             </div>
         </div>
 

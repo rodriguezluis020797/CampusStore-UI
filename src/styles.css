@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 .btn{
-    margin-top: 14px;
+    margin-top: 7px;
 }
 
 h1{
     text-align: center;
+}
+
+div{
+    margin: 1%;
 }

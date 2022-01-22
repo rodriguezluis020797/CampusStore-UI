@@ -1,19 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { Cookies } from './Cookies';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [Cookies]
+  
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
-  cookieValue = '';
+  constructor(private cookies: Cookies) { }
 
-  constructor(private cookieService: CookieService)
-    {}
+  
+  public logoutLink: boolean = false;
+
 
   ngOnInit(): void {
+
   }
-  
+
+  public logOut() {
+
+    if(this.cookies.checkUserCookie() == true){
+      this.cookies.deleteAllCookies();
+    }
+  }
+
 }
