@@ -10,3 +10,7 @@ h1{
 div{
     margin: 1%;
 }
+
+.error-message{
+    color: #EE4B2B;
+}
