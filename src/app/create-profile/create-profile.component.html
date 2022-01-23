@@ -1,4 +1,4 @@
-<ng-container *ngIf="!tempPass">
+<ng-container *ngIf="!success">
     <div>
         <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
         <div class="row justify-content-md-center">
@@ -37,7 +37,7 @@
                             placeholder="Enter email">
                     </div>
                 </form>
-                
+
             </div>
 
             <div class="text-center">
@@ -50,16 +50,15 @@
     </div>
 </ng-container>
 
-<ng-container *ngIf="tempPass">
+<ng-container *ngIf="success">
     <div class="row justify-content-md-center">
 
         <div class="col-md-auto">
 
             <h3>Success! <br>
-            Temporary password is: {{tempPass}} <br>
-        Change it under 'Profile' once logged in.</h3>
+                A temporary password has been sent to your E-Mail.</h3>
 
-        <button class="btn btn-primary" (click)="toLogin()">Back to Login</button>
+            <button class="btn btn-primary" (click)="toLogin()">Back to Login</button>
 
         </div>
 

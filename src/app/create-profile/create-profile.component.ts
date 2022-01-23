@@ -21,7 +21,6 @@ export class CreateProfileComponent implements OnInit {
   public user: UserModel = new UserModel();
   public errorMessage: string | undefined;
   public success: boolean | undefined;
-  public tempPass: string | undefined;
 
 
 
@@ -33,7 +32,6 @@ export class CreateProfileComponent implements OnInit {
     this.users.createUser(this.user).subscribe(
       (result) => {
         this.success = true;
-        this.tempPass = result.tempPassword;
       }, (error) => {
         this.errorMessageFunc(error.error.text);
       }
