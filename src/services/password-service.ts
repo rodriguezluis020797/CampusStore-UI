@@ -21,4 +21,8 @@ export class PasswordService {
     public changePassword(passwordChangeModel: PasswordChangeModel): Observable<boolean>{
         return this.http.put<boolean>(this.devUrl+'/userpasswordhashes/changepassword', passwordChangeModel);
     }
+
+    public resetPassword(eMail: string): Observable<boolean>{
+        return this.http.get<boolean>(this.devUrl+'/userpasswordhashes/resetpassword/' + eMail)
+    }
 }

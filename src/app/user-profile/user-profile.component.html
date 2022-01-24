@@ -18,22 +18,21 @@
                 <button class="btn btn-primary" (click)="changePassword()">Change Password</button>
             </div>
             <div class="col-md-auto">
-                <h2>Order History</h2>
+                <h2>Purchase History</h2>
+                <h3>(Coming soon)</h3>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">Order Id</th>
-                            <th scope="col">Seller</th>
                             <th scope="col">Item</th>
+                            <th scope="col">Seller</th>
                             <th scope="col">Shipped</th>
                             <th scope="col">View Details</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Otto</td>
                             <td>Item A</td>
+                            <th scope="row">Otto</th>
                             <td>*Date Shipped*</td>
                             <td><button class="btn btn-primary" disabled>Details</button></td>
                         </tr>
@@ -81,9 +80,13 @@
                 <h2>Contact Information</h2>
                 <form>
                     <div class="form-group">
-                        <label for="email">E-Mail</label>
+                        <!--
+                            <label for="email">E-Mail</label>
                         <input [(ngModel)]="user.eMail" name="email" type="email" class="form-control" id="email"
                             placeholder="Enter email">
+                        -->
+                        <label for="readOnlyEMail">E-Mail</label>
+                        <p id="readOnlyEMail">{{user.eMail}}</p>
                     </div>
                 </form>
 
@@ -126,7 +129,9 @@
                 </form>
                 <button *ngIf="allowLogin" type="submit" class="btn btn-primary" (click)="login()">Login</button>
                 <button *ngIf="!allowLogin" type="submit" class="btn btn-primary" disabled>Login</button>
+                <small><a (click)="changePassword()">Forgot Password</a></small>
             </div>
+            
 
             <div class="col-md-auto">
                 <h1>Campus</h1>

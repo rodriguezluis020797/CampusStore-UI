@@ -23,10 +23,17 @@ export class ChangePasswordComponent implements OnInit {
 
   public passwordChangeModel: PasswordChangeModel = new PasswordChangeModel();
   public newPasswordVerification: string | undefined;
-  public errorMessage: string | undefined;
+  public errorMessage: string = "";
+  public successMessage: string = "";
+  public forgotPassword: boolean | undefined;
+  public passwordReset: boolean | undefined;
+  public eMail: string = "";
 
   ngOnInit(): void {
     this.userId = this.cookies.getUserIdCookie();
+    if(this.userId == 0 || this.userId == null){
+      this.forgotPassword = true;
+    }
   }
 
   saveNewPassword() : void {
@@ -53,10 +60,35 @@ export class ChangePasswordComponent implements OnInit {
     this.router.navigate(['/user-profile']);
   }
 
+  resetPassword() : void {
+
+    if(this.eMail.length > 0){
+
+      this.passwords.resetPassword(this.eMail).subscribe(
+        (result) => {
+          this.successMessageFunc("If account exists you will receive an e-mail shortly.");
+          this.eMail = "";
+        }, (error) => {
+          this.errorMessageFunc(error.error.text);
+          this.eMail = "";
+        }
+      );
+
+    }
+
+  }
+
+  successMessageFunc(message: string) : void {
+    this.successMessage = message;
+    setTimeout(() => {
+      this.successMessage = "";
+    }, 5000)
+  }
+
   errorMessageFunc(message: string) : void {
     this.errorMessage = message;
     setTimeout(() => {
-      this.errorMessage = undefined;
+      this.errorMessage = "";
     }, 5000)
   }
 
