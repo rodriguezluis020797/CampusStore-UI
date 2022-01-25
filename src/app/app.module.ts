@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ItemsComponent } from './items/items.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     HomeComponent,
     UserProfileComponent,
     CreateProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ItemsComponent
   ],
   imports: [
     FormsModule,
