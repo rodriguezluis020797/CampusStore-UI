@@ -2,11 +2,30 @@
 .btn{
     margin-top: 7px;
     margin-right: 7px;
+    color: #f5f6f6 !important;
+    border-color: #f5f6f6 !important;
+    background-color: #3a70bd !important;
+}
+
+.btn:hover{
+    background-color: #f5f6f6 !important;
+    color: #3a70bd !important;
+    border-color: #3a70bd !important;
+}
+
+a, .nav-item{
+    text-align: center;
+    color: #3a70bd !important;
+    
+}
+
+a:hover{
+    color: #f5f6f6 !important;
+    background-color: #3a70bd !important;
 }
 
 h1{
     text-align: center;
-    color: #3a70bd;
 }
 
 div{
@@ -21,5 +40,5 @@ div{
 }
 
 body{
-    background-color: #f5f6f6;
+    background-color: #f5f6f6; /*#94989a;*/
 }
