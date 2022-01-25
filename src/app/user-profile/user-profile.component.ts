@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router, UrlMatcher } from '@angular/router';
 import { UserService } from 'src/services/user-service';
 import { AppComponent } from '../app.component';
@@ -22,6 +22,7 @@ export class UserProfileComponent implements OnInit {
 
   public user: UserModel | undefined;
   public credentials: LogInModel = new LogInModel();
+  @Output() showLogin = new EventEmitter<boolean>();
 
   public loading: boolean = false;
   public editProfile: boolean = false;
@@ -43,6 +44,7 @@ export class UserProfileComponent implements OnInit {
           this.cookies.setUserCookie(result);
           this.user = result;
           this.router.navigate(['']);
+          this.showLogin.emit(true);
           this.credentials = new LogInModel();
         }, (error) => {
           this.credentials.providedPassword = undefined;

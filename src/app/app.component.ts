@@ -12,16 +12,14 @@ export class AppComponent implements OnInit {
 
   constructor(private cookies: Cookies) { }
 
-  
-  public logoutLink: boolean = false;
-
-
   ngOnInit(): void {
 
   }
 
-  public logOut() {
+  
+ 
 
+  public logOut() {
     if(this.cookies.checkUserCookie() == true){
       this.cookies.deleteAllCookies();
     }
